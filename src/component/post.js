@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 const Post = () => {
-  const [covidData, error, loading] = useAxios({
+  const [covidData, loading] = useAxios({
     axios: axios,
     method: "GET",
     url: "/",
@@ -17,7 +17,7 @@ const Post = () => {
   return (
     <>
       {loading && <p>Loading....</p>}
-      {/* {!loading && error && <p>{error}</p>} */}
+
       <Box sx={{ flexGrow: 1, width: "80%", m: "auto", mt: 5 }}>
         <Grid
           container

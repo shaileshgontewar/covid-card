@@ -4,7 +4,6 @@ import { useState } from "react";
 const useAxios = (configObj) => {
   const { axios, method, url } = configObj;
   const [response, setResponse] = useState([]);
-  const [error, setError] = useState("");
   const [loading, setLoadinge] = useState(true);
 
   useEffect(() => {
@@ -17,7 +16,6 @@ const useAxios = (configObj) => {
         setResponse(res.data);
       } catch (err) {
         console.log(err.message);
-        setError(err.message);
       } finally {
         setLoadinge(false);
       }
@@ -26,6 +24,6 @@ const useAxios = (configObj) => {
     return () => controller.abort();
   }, [axios, method, url]);
 
-  return [response, error, loading];
+  return [response, loading];
 };
 export default useAxios;
