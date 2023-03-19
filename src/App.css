@@ -1,0 +1,12 @@
+footer{
+    background-color: #7e57c2;
+    color: white;
+    font-weight: 700;
+    height: 4rem;
+    width: 100%;
+    display:flex ;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  

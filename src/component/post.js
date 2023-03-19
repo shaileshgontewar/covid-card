@@ -6,6 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Header from "./header";
 
 const Post = () => {
   const [covidData, loading] = useAxios({
@@ -18,6 +19,7 @@ const Post = () => {
     <>
       {loading && <p>Loading....</p>}
 
+      <Header covidData={covidData} />
       <Box sx={{ flexGrow: 1, width: "80%", m: "auto", mt: 5 }}>
         <Grid
           container
@@ -26,26 +28,26 @@ const Post = () => {
         >
           {covidData?.data?.regional.map((data) => (
             <Grid item xs={12} sm={4} md={4} key={data.loc}>
-              <Card sx={{ maxWidth: 280, m: "auto" }}>
+              <Card sx={{ maxWidth: 280, height: 200, m: "auto" }}>
                 <CardContent>
                   <Typography
-                    variant="h5"
-                    sx={{ fontSize: 16, fontWeight: 700, textAlign: "center" }}
+                    variant="h6"
+                    sx={{ fontWeight: 700, textAlign: "center" }}
                     gutterBottom
                   >
                     {data.loc.length > 20 ? data.loc.slice(0, 20) : data.loc}
                   </Typography>
-                  <Typography color="text.secondary" variant="body2">
+                  <Typography
+                    color="text.secondary"
+                    variant="subtitle1"
+                    sx={{ mb: 1, mt: 4 }}
+                  >
                     Total confirmed Cases :- {data.confirmedCasesIndian}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="subtitle1" color="green" sx={{ mb: 1 }}>
                     Discharged :- {data.discharged}
                   </Typography>
-                  <Typography
-                    sx={{ mb: 0 }}
-                    variant="body2"
-                    color="text.secondary"
-                  >
+                  <Typography sx={{ mb: 0 }} variant="subtitle1" color="red">
                     Total Deaths :- {data.deaths}
                   </Typography>
                 </CardContent>
